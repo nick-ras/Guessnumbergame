@@ -31,11 +31,19 @@ namespace Guessnumber // Note: actual namespace depends on the project name.
                     {
                         Console.WriteLine("Too high!");
                         guessCount--;
+                        if (Enumerable.Range(randomNumber - 5, randomNumber + 5).Contains(guess))
+                        {
+                            Console.WriteLine("Your close!");
+                        }
                     }
                     else if (guess < randomNumber)
                     {
                         Console.WriteLine("Too low!");
                         guessCount--;
+                        if (Enumerable.Range(randomNumber - 5, randomNumber + 5).Contains(guess))
+                        {
+                            Console.WriteLine("Your close!");
+                        }
                     }
 
                     else
@@ -44,6 +52,7 @@ namespace Guessnumber // Note: actual namespace depends on the project name.
                         guessCount++;
                     }
                 }
+
 
 
                 
