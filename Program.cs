@@ -7,7 +7,6 @@ namespace Guessnumber // Note: actual namespace depends on the project name.
     {
         static void Main(string[] args)
         {
-            
             var rand = new Random();
             int guessCount = 6;
             int amountGuesses = 6;
