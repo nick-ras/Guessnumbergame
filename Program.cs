@@ -10,6 +10,7 @@ namespace Guessnumber // Note: actual namespace depends on the project name.
             var rand = new Random();
             int randomNumber = rand.Next(1, 101); 
             int guessCount = 6;
+            int num = 1;
             int startAmountGuesses = 6;
 
             for (int i = startAmountGuesses; i > 0; i--)
@@ -48,13 +49,18 @@ namespace Guessnumber // Note: actual namespace depends on the project name.
 
                 else if (guess < 1 && guess > 100)
                 {
-                    Console.WriteLine("Wrong format, the answer needs to be a number between 1-100");
+                    Console.WriteLine("The answer needs to be a number between 1-100");
                     guessCount++;
                 }
-                else if (guessCount < 1)
+
+                if (guessCount < 1)
                 {
                     Console.WriteLine("Your out of guesses! <--{()}--->");
                     break;
+                }
+                else
+                {
+                    continue;
                 }
             }
         }
