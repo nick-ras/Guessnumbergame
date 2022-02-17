@@ -8,60 +8,59 @@ namespace Guessnumber // Note: actual namespace depends on the project name.
         static void Main(string[] args)
         {
             var rand = new Random();
+            int randomNumber = rand.Next(1, 101); 
             int guessCount = 6;
-            int amountGuesses = 6;
-            int randomNumber = rand.Next(1, 101);
+            int startAmountGuesses = 6;
 
-            for (int i = amountGuesses; i > 0; i--)
+            for (int i = startAmountGuesses; i > 0; i--)
             {
-                Console.WriteLine("Guess a number from 1-100, you have {0} guesses left", guessCount);
+                Console.WriteLine($"Guess a number from 1-100, you have {guessCount} guesses left");
                 int guess = Convert.ToInt32(Console.ReadLine());
 
-                if (guessCount <= 0)
-                {
-                    Console.WriteLine("your out of guesses");
-                }
-                else if (guess == randomNumber)
+
+                if ((guess == randomNumber))
                 {
                     Console.WriteLine("You guessed it!");
+                    break;
                 }
-                else if (guessCount > 0)
+
+                if (guess > randomNumber)
                 {
-                    if (guess > randomNumber)
+                    Console.WriteLine("Too high!");
+                    guessCount--;
+                    if (guess <= randomNumber + 5 && guess >= randomNumber - 5)
                     {
-                        Console.WriteLine("Too high!");
-                        guessCount--;
-                        if (Enumerable.Range(randomNumber - 5, randomNumber + 5).Contains(guess))
-                        {
-                            Console.WriteLine("Your close!");
-                        }
-                    }
-                    else if (guess < randomNumber)
-                    {
-                        Console.WriteLine("Too low!");
-                        guessCount--;
-                        if (Enumerable.Range(randomNumber - 5, randomNumber + 5).Contains(guess))
-                        {
-                            Console.WriteLine("Your close!");
-                        }
+                        Console.WriteLine("Your close!");
                     }
 
-                    else
-                    {
-                        Console.WriteLine("Incorrect answer, the answer needs to be a number between 1-100");
-                        guessCount++;
-                    }
                 }
 
+                else if (guess < randomNumber)
+                {
+                    Console.WriteLine("Too low!");
+                    guessCount--;
+                    if (guess <= randomNumber + 5 && guess >= randomNumber - 5)
+                    {
+                        Console.WriteLine("Your close!");
+                    }
 
+                }
 
-                
+                else if (guess < 1 && guess > 100)
+                {
+                    Console.WriteLine("Wrong format, the answer needs to be a number between 1-100");
+                    guessCount++;
+                }
+                else if (guessCount < 1)
+                {
+                    Console.WriteLine("Your out of guesses! <--{()}--->");
+                    break;
+                }
             }
-            
-
-
         }
-        
-       
     }
 }
+
+
+
+    
