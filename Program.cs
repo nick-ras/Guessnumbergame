@@ -19,35 +19,30 @@ namespace Guessnumber // Note: actual namespace depends on the project name.
                 int guess = Convert.ToInt32(Console.ReadLine());
 
 
-                if ((guess == randomNumber))
+                if (guess == randomNumber)
                 {
                     Console.WriteLine("You guessed it!");
                     break;
                 }
 
-                else if (guess > randomNumber)
+                if (guess > randomNumber)
                 {
                     Console.WriteLine("Too high!");
                     guessCount--;
-                    if (guess <= randomNumber + 5 && guess >= randomNumber - 5)
-                    {
-                        Console.WriteLine("Your close!");
-                    }
-
                 }
 
-                else if (guess < randomNumber)
+                if (guess < randomNumber)
                 {
                     Console.WriteLine("Too low!");
                     guessCount--;
-                    if (guess <= randomNumber + 5 && guess >= randomNumber - 5)
-                    {
-                        Console.WriteLine("Your close!");
-                    }
-
                 }
 
-                else if (guess < 1 && guess > 100)
+                if (guess <= randomNumber + 5 && guess >= randomNumber - 5)
+                {
+                    Console.WriteLine("Your close!");
+                }
+
+                if (guess < 1 && guess > 100)
                 {
                     Console.WriteLine("The answer needs to be a number between 1-100");
                     guessCount++;
