@@ -13,7 +13,7 @@ namespace Guessnumber // Note: actual namespace depends on the project name.
             
             int startAmountGuesses = 6;
 
-            for (int i = startAmountGuesses; i > 0; i--)
+            for (int i = startAmountGuesses; guessCount > 0; i--)
             {
                 Console.WriteLine($"Guess a number from 1-100, you have {guessCount} guesses left");
                 int guess = Convert.ToInt32(Console.ReadLine());
@@ -37,15 +37,16 @@ namespace Guessnumber // Note: actual namespace depends on the project name.
                     guessCount--;
                 }
 
-                if (guess <= randomNumber + 5 && guess >= randomNumber - 5)
-                {
-                    Console.WriteLine("Your close!");
-                }
-
-                if (guess < 1 && guess > 100)
+                if (guess < 1 || guess > 100)
                 {
                     Console.WriteLine("The answer needs to be a number between 1-100");
                     guessCount++;
+                    continue;
+                }
+
+                if (guess <= randomNumber + 5 && guess >= randomNumber - 5)
+                {
+                    Console.WriteLine("Your close!");
                 }
 
                 if (guessCount < 1)
